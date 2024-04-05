@@ -1,0 +1,7 @@
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15.5em, 1fr));
+    grid-row-gap: 1em;
+    justify-items: center;
+    padding: 20px
+}

@@ -1,26 +1,31 @@
 .card-container {
     display: flex;
     flex-direction: column;
+    border: 2px solid black;
+    padding: .5rem;
 }
 
 .card-inline-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border: 2px solid black;
+
 }
 
 .card-img {
     width: 100%;
-    transition: transform 0.25s;
+    transition: transform 0.25s ease-out;
 }
 
 .card-container:hover .card-img {
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 .card-img-container {
     object-fit: fill;
     width: 15em;
     height: 15em;
+    border-radius: 2em;
     overflow: hidden;
 }
