@@ -2,4 +2,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0;
+}
+
+.rating-container>h3 {
+    margin: 0;
 }

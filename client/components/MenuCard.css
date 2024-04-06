@@ -3,6 +3,7 @@
     flex-direction: column;
     border: 2px solid black;
     padding: .5rem;
+    margin: .5rem;
 }
 
 .card-inline-container {
@@ -10,7 +11,11 @@
     flex-direction: row;
     justify-content: space-between;
     border: 2px solid black;
+    margin-top: .5em;
+}
 
+.card-inline-container>h3 {
+    margin: 0;
 }
 
 .card-img {
