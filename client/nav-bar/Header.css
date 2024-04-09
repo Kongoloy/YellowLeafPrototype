@@ -1,0 +1,30 @@
+.header-container {
+    position: fixed;
+    width: 100vw;
+}
+
+.navbar-container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: aqua;
+}
+
+.navbar-link-container {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.navbar-link-container>li>a {
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .header-container {
+        bottom: 0;
+    }
+}
