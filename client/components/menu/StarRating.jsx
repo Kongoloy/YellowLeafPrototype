@@ -1,5 +1,5 @@
 import GradeIcon from '@mui/icons-material/Grade';
-import './StarRating.css'
+import './StarRating.scss'
 export default function StarRating({ rating }) {
 
     return (
