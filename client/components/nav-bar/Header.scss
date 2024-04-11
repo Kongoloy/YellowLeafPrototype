@@ -1,13 +1,10 @@
-$p-color: #FCA311;
-$s-color: #14213D;
-$o-color: white;
-
+@use '../var' as *;
 
 
 .header-container {
-    position: fixed;
+    position: sticky;
     width: 100vw;
-
+    z-index: 1000;
 }
 
 .navbar-container {
@@ -17,14 +14,12 @@ $o-color: white;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    border-top: 1px solid $p-color;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(0.1em);
-    z-index: 100;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: $o-color;
 }
 
 .navbar-container>h1 {
-    color: $p-color;
+    color: $s-color;
 }
 
 .navbar-link-container {
@@ -43,11 +38,12 @@ $o-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: $p-color;
+    color: $s-color;
     text-decoration: none;
 }
 
 .navbar-icon {
+    display: none !important;
     color: $s-color;
     width: clamp(2rem, 9vw, 5rem) !important;
     height: auto !important;
@@ -56,6 +52,11 @@ $o-color: white;
 
 @media only screen and (max-width: 600px) {
     .header-container {
+        position: fixed;
         bottom: 0;
+    }
+
+    .navbar-icon {
+        display: block !important;
     }
 }

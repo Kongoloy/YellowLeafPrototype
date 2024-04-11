@@ -1,7 +1,18 @@
+@use '../var' as *;
+
 .menu-container {
+    border: 1px solid black;
+    background-color: $p-color;
+    border-radius: 12em 12em 0 0;
+}
+
+.menu-tag {
+    text-align: center;
+}
+
+.menu-cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc(15.5em + 20px), 1fr));
     justify-items: center;
-    grid-gap: 2em;
-    background-color: ;
+    grid-gap: 1em;
 }
