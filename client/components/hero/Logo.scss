@@ -1,0 +1,12 @@
+@use '../var' as *;
+
+.logo-container {
+    text-align: center;
+}
+
+.logo {
+    width: 40vw;
+    max-width: 15em;
+    height: auto;
+    margin: 0 auto;
+}

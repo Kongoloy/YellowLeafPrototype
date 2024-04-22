@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap');
 
 * {
-
   font-family: EB Garamond;
 }
 
+body {
+  margin: 0;
+}
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -74,7 +76,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
-
-body {
-  margin: 0;
-}
