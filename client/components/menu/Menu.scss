@@ -5,17 +5,30 @@
     background-color: $p-color;
     border-radius: 12em 12em 0 0;
     margin: 0 auto;
+    text-align: center;
 }
 
 .menu-tag {
     font-size: clamp(2rem, 9vw, 5rem);
-    text-align: center;
+    margin: 0;
+}
+
+.menu-cards-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(calc(15.5em + 20px), 1fr));
-    justify-items: center;
-    grid-gap: 2em;
-    grid-gap: 1em;
+    display: flex;
+    width: auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
 }
+
+
+// @media only screen and (max-width: 860px) {
+//     .menu-cards-container {
+//         justify-content: center;
+//     }
+// }

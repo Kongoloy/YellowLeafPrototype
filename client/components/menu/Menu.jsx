@@ -1,42 +1,49 @@
-import { useState } from "react"
-import MenuCard from "./MenuCard"
-import "./Menu.scss"
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import MenuCard from "./MenuCard";
+import "./Menu.scss";
+import { motion } from "framer-motion";
+import { capFirstLetter } from "../../../utils";
+
 export default function Menu() {
-    const [cards, SetCards] = useState([{
-        cardImage: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        cardReviews: 2,
-        cardName: "coffee",
-        cardDes: "lorem",
-    }, {
-        cardImage: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        cardReviews: 2,
-        cardName: "coffee",
-        cardDes: "lorem",
-    }, {
-        cardImage: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        cardReviews: 2,
-        cardName: "coffee",
-        cardDes: "lorem",
-    }, {
-        cardImage: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        cardReviews: 2,
-        cardName: "coffee",
-        cardDes: "lorem",
-    }, {
-        cardImage: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        cardReviews: 2,
-        cardName: "coffee",
-        cardDes: "lorem",
-    }])
+    // temporary
+    // for cards only get data for the first top 5 menus not all menus to save performance
+    const [drinkCategory, setDrinkCategory] = useState([])
+    const [cards, setCards] = useState([]);
+    const [drinkTypeMenu, setDrinkTypeMenu] = useState('coffee');
+
+    useEffect(() => {
+        const fetchDrinks = async () => {
+            try {
+                const res = await axios.get('http://localhost:3000/drinks');
+                const { data, category } = res.data
+                setCards(data)
+                setDrinkCategory(category)
+            } catch (error) {
+                console.error('Error fetching data cards:', error);
+            }
+        };
+        fetchDrinks();
+    }, []);
 
     return (
-        <div className="menu-container">
+        <div className="menu-container" id="menu">
             <h1 className="menu-tag">Menu</h1>
-            <div className="menu-cards-container">
-                {cards.map((card, index) => {
-                    return <MenuCard key={index} cardImage={card.cardImage} cardReviews={card.cardReviews} cardDes={card.cardDes} cardName={card.cardName} />
+            {console.log(cards)}
+            <div className="">
+                {drinkCategory.map((c, idx) => {
+                    return <motion.button onClick={() => setDrinkTypeMenu(c)} key={idx}>{capFirstLetter(c)}</motion.button>
                 })}
             </div>
+            <div className="menu-cards-wrapper">
+                <motion.div className="menu-cards-container">
+                    {cards.map((card, idx) =>
+                        card.category === drinkTypeMenu ?
+                            <MenuCard key={idx} cardImage={card.image} cardReviews={card.rating} cardDes={card.description} cardName={card.name} /> : null
+                    )}
+                </motion.div>
+            </div>
         </div>
-    )
+    );
 }
+

@@ -29,16 +29,16 @@
 
 .card-container:hover .card-img {
     transform: scale(1.2);
-
 }
-
-
-
 
 .card-img-container {
     object-fit: fill;
     width: 15em;
+    width: clamp(15em, 15vw, 15em);
     height: 15em;
+    height: clamp(15em, 15vw, 15em);
     border-radius: 2em;
     overflow: hidden;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
 }

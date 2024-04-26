@@ -1,4 +1,3 @@
-import { useState } from "react"
 import StarRating from "./StarRating"
 import './MenuCard.scss'
 export default function MenuCard({ cardImage, cardDes, cardName, cardReviews }) {

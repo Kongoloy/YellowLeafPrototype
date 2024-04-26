@@ -2,19 +2,35 @@
 
 .hero-container {
     width: 100%;
-    height: 100%;
+}
+
+// .hero-text-container {
+//     width: 100%;
+//     height: 100%;
+//     overflow: hidden;
+// }
+
+.hero-img-carousel {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .hero-img-container {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background-image: url('https://images.unsplash.com/photo-1712942851408-6deb69dc4185?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     /* Ensure the background image covers the container */
     background-position: center;
     /* Center the background image */
 }
+
+.hidden {
+    transition: 0.25s;
+    display: none;
+}
+
 
 .hero-welcome-container {
     width: 100%;
@@ -23,27 +39,25 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    top: 0;
     z-index: 2;
     position: absolute;
-
 }
 
 .hero-welcome-container>h1 {
     color: $o-color;
     margin: 0;
+    font-size: clamp(3em, 10vw, 5em);
 }
 
 .hero-welcome-container>h2 {
     color: $o-color;
     margin: 0;
+    font-size: clamp(1.5em, 5vw, 2em);
 }
 
-.hero-blackdrop-filter {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: black;
-    backdrop-filter: blur(4px);
-    opacity: 0.5;
-    z-index: 1;
+.hero-welcome-container>h3 {
+    color: $o-color;
+    margin: 0;
+    font-size: clamp(1em, 5vw, 2em);
 }

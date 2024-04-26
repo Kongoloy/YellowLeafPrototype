@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
+import './App.scss'
 import AboutUsLink from './pages/AboutUsLink'
 import MenuLink from './pages/MenuLink'
 import LocationLink from './pages/LocationLink'

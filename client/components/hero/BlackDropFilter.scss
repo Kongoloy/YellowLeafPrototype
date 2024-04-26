@@ -1,0 +1,8 @@
+@use '../var' as *;
+
+.hero-blackdrop-filter {
+    background-color: black;
+    backdrop-filter: blur(4px);
+    opacity: 0.5;
+    z-index: 1;
+}
