@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.scss'
 import AboutUsLink from './pages/AboutUsLink'
 import MenuLink from './pages/MenuLink'
 import LocationLink from './pages/LocationLink'
@@ -8,7 +7,7 @@ import Header from '../components/nav-bar/Header'
 import Menu from '../components/menu/Menu'
 import Logo from '../components/hero/Logo'
 import Hero from '../components/hero/Hero'
-
+import Location from '../components/location/Location'
 function App() {
 
   return (
@@ -16,6 +15,7 @@ function App() {
       <Header />
       <Hero />
       <Menu />
+      <Location />
       {/* <BrowserRouter>
         <Routes >
           <Route path='/' element={<HomeLink />} />

@@ -18,16 +18,7 @@ export default function Header() {
     const dropDown = () => {
         setIsDropDown(!(isDropDown))
     }
-    useEffect(() => {
-        if (isDropDown) {
-            document.body.classList.add('noscroll');
-        } else {
-            document.body.classList.remove('noscroll');
-        }
-        return () => {
-            document.body.classList.remove('noscroll');
-        };
-    }, [isDropDown]);
+
     return (
         <>
             {isDropDown && <BlackDropFilter position='fixed' width='100vw' height='100vh' />}

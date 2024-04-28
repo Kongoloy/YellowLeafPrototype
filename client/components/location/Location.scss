@@ -1,0 +1,7 @@
+@use '../var' as *;
+
+.location-tag {
+    font-size: clamp(5em, 10vw, 10em);
+    color: $p-color;
+    text-align: center;
+}

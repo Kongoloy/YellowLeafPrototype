@@ -5,7 +5,7 @@ export default function StarRating({ rating }) {
     return (
         <div className='rating-container'>
             <h3>{rating}</h3>
-            <GradeIcon />
+            <GradeIcon style={{ margin: 0 }} />
         </div>
     )
 }

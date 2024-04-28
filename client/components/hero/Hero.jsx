@@ -34,6 +34,14 @@ export default function Hero() {
                     <h1>YellowLeaf</h1>
                     <h2>8:00 - 17:00</h2>
                     <h3>Closed on Wednesdays</h3>
+                    <br />
+                    <motion.div transition={{ duration: .5, delay: 1 }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="hero-quote-container">
+                        <blockquote>
+                            <h1> " A good cup of Coffee , made for your Everyday "</h1>
+                            <br />
+                            <motion.footer transition={{ duration: .5, delay: 1.5 }} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}>- YellowLeaf</motion.footer>
+                        </blockquote>
+                    </motion.div>
                 </div>
             </div>
         </div>

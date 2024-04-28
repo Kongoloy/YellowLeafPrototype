@@ -61,3 +61,31 @@
     margin: 0;
     font-size: clamp(1em, 5vw, 2em);
 }
+
+.hero-quote-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+    position: absolute;
+    top: 90%;
+}
+
+.hero-quote-container>blockquote {
+    margin: 0;
+    text-align: center;
+
+}
+
+.hero-quote-container>blockquote>h1 {
+    color: $o-color;
+    font-size: clamp(2em, 4vw, 4em);
+    margin: initial;
+}
+
+.hero-quote-container>blockquote>footer {
+    color: $o-color;
+    text-align: right;
+    margin: initial;
+}

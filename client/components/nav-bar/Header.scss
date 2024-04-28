@@ -48,6 +48,10 @@
     text-decoration: none;
 }
 
+.navbar-link-container>li>a:hover {
+    font-style: italic;
+}
+
 .navbar-icon-container {
     display: flex;
     justify-content: space-evenly;

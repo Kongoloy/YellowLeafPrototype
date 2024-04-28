@@ -1,16 +1,48 @@
 @use '../var' as *;
 
+.menu {
+    width: 100%;
+    padding: 1em 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+}
+
 .menu-container {
-    border: 1px solid black;
-    background-color: $p-color;
-    border-radius: 12em 12em 0 0;
+    padding: 2em 0;
+    width: 95%;
     margin: 0 auto;
-    text-align: center;
+    background-color: $p-color;
+    border-radius: 12em;
+}
+
+.menu-nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 2em 0;
+}
+
+.menu-sidebar-container {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
 }
 
 .menu-tag {
-    font-size: clamp(2rem, 9vw, 5rem);
+    font-size: clamp(5em, 10vw, 10em);
     margin: 0;
+    margin-right: .25em;
+    color: $s-color;
+    text-align: center;
+}
+
+.menu-info {
+    font-size: clamp(1.5em, 5vw, 2em);
+    color: $s-color;
+    text-align: center;
+    margin: 0;
+    margin-bottom: .5em;
 }
 
 .menu-cards-wrapper {
@@ -26,9 +58,60 @@
     scroll-snap-type: x mandatory;
 }
 
+.menu-cards-type-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1em;
+}
 
-// @media only screen and (max-width: 860px) {
-//     .menu-cards-container {
-//         justify-content: center;
-//     }
-// }
+.menu-cards-type {
+    font-size: clamp(.75em, 10vw, 1.5em);
+    padding: .5em 1em;
+    background-color: $o-color;
+    border: none;
+}
+
+.menu-cards-type:nth-child(1) {
+    border-radius: 2em 0 0 2em;
+    border-right: solid $s-color 2px;
+}
+
+.menu-cards-type:nth-child(2) {
+    border-radius: initial;
+}
+
+.menu-cards-type:nth-child(3) {
+    border-radius: 0 2em 2em 0;
+    border-left: solid $s-color 2px;
+}
+
+@media only screen and (max-width: 860px) {
+
+    .menu {
+        margin: .5em 0;
+    }
+
+    .menu-container {
+        width: 100%;
+    }
+
+    .menu-cards-type {
+        padding: .25em .5em;
+    }
+
+    .menu-tag {
+        margin: 0;
+    }
+
+    .menu-nav-container {
+        display: initial
+    }
+
+    .menu-sidebar-container {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        flex-direction: column;
+    }
+}

@@ -27,21 +27,27 @@ export default function Menu() {
     }, []);
 
     return (
-        <div className="menu-container" id="menu">
-            <h1 className="menu-tag">Menu</h1>
-            {console.log(cards)}
-            <div className="">
-                {drinkCategory.map((c, idx) => {
-                    return <motion.button onClick={() => setDrinkTypeMenu(c)} key={idx}>{capFirstLetter(c)}</motion.button>
-                })}
+        <div className="menu" id="menu">
+            <div className="menu-nav-container">
+                <h1 className="menu-tag" >Menu</h1>
+                <div className="menu-sidebar-container">
+                    <h2 className="menu-info">- Select from our bestsellers -</h2>
+                    <div className="menu-cards-type-container">
+                        {drinkCategory.map((c, idx) => {
+                            return <motion.button transition={{ duration: .5 }} whileHover={{ fontStyle: 'italic', fontWeight: 'bold' }} className='menu-cards-type' onClick={() => setDrinkTypeMenu(c)} key={idx}>{capFirstLetter(c)}</motion.button>
+                        })}
+                    </div>
+                </div>
             </div>
-            <div className="menu-cards-wrapper">
-                <motion.div className="menu-cards-container">
-                    {cards.map((card, idx) =>
-                        card.category === drinkTypeMenu ?
-                            <MenuCard key={idx} cardImage={card.image} cardReviews={card.rating} cardDes={card.description} cardName={card.name} /> : null
-                    )}
-                </motion.div>
+            <div className="menu-container" >
+                <div className="menu-cards-wrapper">
+                    <motion.div className="menu-cards-container">
+                        {cards.map((card, idx) =>
+                            card.category === drinkTypeMenu ?
+                                <MenuCard key={idx} cardImage={card.image} cardReviews={card.rating} cardDes={card.description} cardName={card.name} /> : null
+                        )}
+                    </motion.div>
+                </div>
             </div>
         </div>
     );
