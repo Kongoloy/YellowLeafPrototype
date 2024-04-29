@@ -20,9 +20,10 @@ const PORT = process.env.PORT || 5050
 app.use(cors())
 // app.use(express.json())
 
-app.get('/drinks', async (req, res) => {
+app.get('/api/drinks', async (req, res) => {
     const data = await Drink.find()
     const category = Drink.schema.path('category').enumValues
+    console.log(data, category)
     res.send({ data, category })
 })
 
