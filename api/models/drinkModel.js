@@ -10,12 +10,14 @@ const drinkSchema = new mongoose.Schema({
         required: true,
         minLength: 0
     },
+    // add in database directly
     rating: {
         type: Number,
         required: true,
         min: 0,
         max: 5
     },
+    // add in database directly
     description: {
         type: String,
         required: true,

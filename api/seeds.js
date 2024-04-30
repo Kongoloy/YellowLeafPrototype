@@ -1,6 +1,9 @@
 import Drink from "./models/drinkModel.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import admin from "firebase-admin";
+import axios from "axios";
+import { capFirstLetter } from "../utils.js";
 dotenv.config()
 async function main() {
     try {
@@ -15,6 +18,7 @@ async function main() {
 }
 
 main().catch(err => console.log(err));
+
 // {
 //     cardImage: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 //     cardReviews: 2,
@@ -24,7 +28,7 @@ main().catch(err => console.log(err));
 
 const americano = new Drink(
     {
-        image: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: axios.get(`http://localhost:3000/${capFirstLetter(this.name)}`),
         rating: 2.2,
         name: "americano",
         description: "lorem",
