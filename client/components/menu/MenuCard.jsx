@@ -1,7 +1,7 @@
 import StarRating from "./StarRating"
 import './MenuCard.scss'
 import { motion } from "framer-motion"
-import { capFirstLetter } from "../../../utils"
+import { capFirstLetter, removeJPG, replaceWithSpace } from "../../../utils"
 export default function MenuCard({ cardImage, cardDes, cardName, cardReviews }) {
 
     return (
@@ -11,7 +11,7 @@ export default function MenuCard({ cardImage, cardDes, cardName, cardReviews }) 
                     <img className="card-img" src={cardImage} alt={cardName} />
                 </div>
                 <div className="card-inline-container">
-                    <h3>{capFirstLetter(cardName)}</h3>
+                    <h3>{replaceWithSpace(removeJPG(capFirstLetter(cardName)))}</h3>
                     <StarRating rating={cardReviews}></StarRating>
                 </div>
                 <h4>{cardDes}</h4>

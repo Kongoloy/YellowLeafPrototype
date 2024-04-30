@@ -1,9 +1,9 @@
 import Drink from "./models/drinkModel.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import admin from "firebase-admin";
-import axios from "axios";
-import { capFirstLetter } from "../utils.js";
+import { initializeApp } from "firebase/app";
+import { getDownloadURL, getStorage, listAll, ref } from 'firebase/storage';
+
 dotenv.config()
 async function main() {
     try {
@@ -19,112 +19,51 @@ async function main() {
 
 main().catch(err => console.log(err));
 
-// {
-//     cardImage: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     cardReviews: 2,
-//     cardName: "coffee",
-//     cardDes: "lorem",
-// }
 
-const americano = new Drink(
-    {
-        image: axios.get(`http://localhost:3000/${capFirstLetter(this.name)}`),
-        rating: 2.2,
-        name: "americano",
-        description: "lorem",
-        category: 'coffee'
+const app = initializeApp({
+    "type": process.env.Firebase_type,
+    "project_id": process.env.Firebase_project_id,
+    "private_key_id": process.env.Firebase_key_id,
+    "private_key": process.env.Firebase_private_key,
+    "client_email": process.env.Firebase_client_email,
+    "client_id": process.env.Firebase_client_id,
+    "auth_uri": process.env.Firebase_auth_uri,
+    "token_uri": process.env.Firebase_token_uri,
+    "auth_provider_x509_cert_url": process.env.Firebase_auth_provider_x509_cert_url,
+    "client_x509_cert_url": process.env.Firebase_client_x509_cert_url,
+    "universe_domain": process.env.Firebase_universe_domain,
+    "storageBucket": process.env.Firebase_storageBucket,
+});
+const storage = getStorage(app);
+const category = ['Coffee', 'Non-coffee', 'Dessert'];
+
+
+const getAllData = async (category) => {
+    for (let i = 0; i < category.length; i++) {
+        try {
+            const storageRef = ref(storage, category[i])
+            const data = await listAll(storageRef)
+            for (let j = 0; j < data.items.length; j++) {
+                try {
+                    const downloadURL = await getDownloadURL(data.items[j]);
+                    Drink.insert({
+                        image: downloadURL,
+                        name: data.items[j].name,
+                        category: category[i],
+                        description: ' ',
+                        price: -1
+                    })
+                } catch (e) {
+                    console.log(e)
+                }
+
+            }
+            console.log('Image retrieved from Firebase Storage and stored in MongoDB');
+        } catch (error) {
+            console.error('Error retrieving image from Firebase Storage:', error);
+
+        }
     }
-)
-Drink.insertMany([{
-    image: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'coffee'
-}, {
-    image: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'coffee'
-}, {
-    image: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'coffee'
-}, {
-    image: "https://images.unsplash.com/photo-1559496417-e7f25cb247f3?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'coffee'
-}, {
-    image: "https://images.unsplash.com/photo-1644031995386-fe9665dc5b57?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'non-coffee'
-}, {
-    image: "https://images.unsplash.com/photo-1644031995386-fe9665dc5b57?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'non-coffee'
-}, {
-    image: "https://images.unsplash.com/photo-1644031995386-fe9665dc5b57?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'non-coffee'
-}, {
-    image: "https://images.unsplash.com/photo-1644031995386-fe9665dc5b57?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'non-coffee'
-}, {
-    image: "https://images.unsplash.com/photo-1644031995386-fe9665dc5b57?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'non-coffee'
-}, {
-    image: "https://images.unsplash.com/photo-1602663491496-73f07481dbea?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'dessert'
-}, {
-    image: "https://images.unsplash.com/photo-1602663491496-73f07481dbea?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'dessert'
-}, {
-    image: "https://images.unsplash.com/photo-1602663491496-73f07481dbea?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'dessert'
-}, {
-    image: "https://images.unsplash.com/photo-1602663491496-73f07481dbea?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'dessert'
-}, {
-    image: "https://images.unsplash.com/photo-1602663491496-73f07481dbea?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    rating: 2.2,
-    name: "americano",
-    description: "lorem",
-    category: 'dessert'
-}])
-// Drink.save()
-try {
-    const data = await americano.save()
-    console.log(data)
-} catch (e) {
-    console.log(e)
 }
+getAllData(category)
 

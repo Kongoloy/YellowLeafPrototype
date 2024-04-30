@@ -10,14 +10,13 @@ const drinkSchema = new mongoose.Schema({
         required: true,
         minLength: 0
     },
-    // add in database directly
-    rating: {
+    //if not changed it will autoset to -1
+    price: {
         type: Number,
         required: true,
-        min: 0,
-        max: 5
+        min: -1,
     },
-    // add in database directly
+    //if not changed it will autoset to "delicious"
     description: {
         type: String,
         required: true,
@@ -26,7 +25,8 @@ const drinkSchema = new mongoose.Schema({
     category: {
         type: String,
         enum: ['coffee', 'non-coffee', 'dessert'],
-        required: true
+        required: true,
+        lowercase: true
     }
 })
 
