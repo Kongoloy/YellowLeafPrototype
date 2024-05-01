@@ -39,6 +39,7 @@ const category = ['Coffee', 'Non-coffee', 'Dessert'];
 
 
 const getAllData = async (category) => {
+    const allData = [];
     for (let i = 0; i < category.length; i++) {
         try {
             const storageRef = ref(storage, category[i])
@@ -46,12 +47,13 @@ const getAllData = async (category) => {
             for (let j = 0; j < data.items.length; j++) {
                 try {
                     const downloadURL = await getDownloadURL(data.items[j]);
-                    Drink.insert({
+                    allData.push({
                         image: downloadURL,
                         name: data.items[j].name,
                         category: category[i],
                         description: ' ',
-                        price: -1
+                        price: -1,
+                        recommended: false,
                     })
                 } catch (e) {
                     console.log(e)
@@ -61,9 +63,10 @@ const getAllData = async (category) => {
             console.log('Image retrieved from Firebase Storage and stored in MongoDB');
         } catch (error) {
             console.error('Error retrieving image from Firebase Storage:', error);
-
         }
     }
+    await Drink.insertMany(allData)
+    console.log('Yippee!!!!!!!')
 }
 getAllData(category)
 

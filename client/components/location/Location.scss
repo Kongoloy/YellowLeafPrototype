@@ -1,7 +1,69 @@
 @use '../var' as *;
 
+.location {
+    background-color: $s-color;
+    display: block;
+    padding: 1em 0;
+}
+
 .location-tag {
     font-size: clamp(5em, 10vw, 10em);
     color: $p-color;
     text-align: center;
+    margin: 0;
+}
+
+.location-container {
+    display: flex;
+    width: clamp(50em, 70vw, 80em);
+    height: 80vh;
+    margin: 0 auto;
+    gap: .25em
+}
+
+.location-info-container {
+    width: 30%;
+    background-color: $p-color;
+    text-align: center;
+    padding: 3em 0;
+}
+
+.location-info-container>a,
+.location-info-container>a:visited {
+    font-size: clamp(.75em, 10vw, 1.5em);
+    padding: .5em 1em;
+    display: inline-block;
+    text-decoration: none;
+    color: $p-color;
+    background-color: $s-color;
+    border-radius: 2em;
+}
+
+.location-info-container>h2 {
+    margin: 1em 0;
+}
+
+.location-info-container>h3 {
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.location-logo {
+    width: clamp(1em, 30vw, 10em);
+    height: auto;
+    bottom: 0;
+}
+
+@media only screen and (max-width: 860px) {
+    .location-container {
+        width: 90vw;
+        height: 90vh;
+        flex-direction: column;
+    }
+
+    .location-info-container {
+        width: 100%;
+        padding: 1em 0;
+    }
 }

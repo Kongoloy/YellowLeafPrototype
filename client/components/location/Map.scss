@@ -1,0 +1,35 @@
+@use '../var' as *;
+
+.map-container {
+    display: flex;
+    width: 70%;
+    height: 100%;
+    gap: .25em
+}
+
+.map-img-container {
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    transition: .5s;
+}
+
+.map-img-container:hover {
+    width: 100% !important;
+}
+
+.map-img-container:nth-child(1) {
+    left: 0;
+}
+
+.map-img-container:nth-child(2) {
+    right: 0;
+}
+
+@media only screen and (max-width: 860px) {
+    .map-container {
+        width: 100%;
+    }
+}

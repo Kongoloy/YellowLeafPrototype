@@ -1,7 +1,7 @@
 import "./Logo.scss"
 import { motion } from "framer-motion"
 
-export default function Logo({ color }) {
+export default function Logo({ color, classType }) {
     return (
         <motion.div
             className="logo-container"
@@ -12,7 +12,7 @@ export default function Logo({ color }) {
             whileHover={{ scale: 1.1 }}
         >
             <motion.svg
-                className="logo"
+                className={classType}
                 version="1.0"
                 xmlns="http://www.w3.org/2000/svg"
                 width="254.000000pt"

@@ -89,3 +89,8 @@
     text-align: right;
     margin: initial;
 }
+
+.hero-logo {
+    width: clamp(2.5em, 40vw, 15em);
+    height: auto;
+}

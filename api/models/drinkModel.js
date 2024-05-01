@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 
 const drinkSchema = new mongoose.Schema({
@@ -27,6 +28,9 @@ const drinkSchema = new mongoose.Schema({
         enum: ['coffee', 'non-coffee', 'dessert'],
         required: true,
         lowercase: true
+    },
+    recommended: {
+        type: Boolean
     }
 })
 

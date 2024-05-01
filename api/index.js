@@ -28,7 +28,6 @@ app.get('/api/drinks', async (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(`
-    server runnning on ${PORT}`)
+    console.log(`server runnning on ${PORT}`)
 })
 
