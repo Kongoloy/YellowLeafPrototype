@@ -1,7 +1,7 @@
 import StarRating from "./StarRating"
 import './MenuCard.scss'
 import { motion } from "framer-motion"
-import { capFirstLetter, removeJPG, replaceWithSpace } from "../../../utils"
+import { capFirstLetter, removeJPG, replaceWithSpace } from "../../utils"
 export default function MenuCard({ cardImage, cardDes, cardName, cardReviews }) {
 
     return (

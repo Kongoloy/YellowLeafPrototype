@@ -3,7 +3,7 @@ import axios from 'axios';
 import MenuCard from "./MenuCard";
 import "./Menu.scss";
 import { motion } from "framer-motion";
-import { capFirstLetter } from "../../../utils";
+import { capFirstLetter } from "../../utils";
 
 export default function Menu() {
     // temporary
