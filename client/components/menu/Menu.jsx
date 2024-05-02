@@ -15,7 +15,7 @@ export default function Menu() {
     useEffect(() => {
         const fetchDrinks = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/drinks');
+                const res = await axios.get('https://yellow-leaf-api.vercel.app/drinks');
                 const { data, category } = res.data
                 setCards(data)
                 setDrinkCategory(category)
