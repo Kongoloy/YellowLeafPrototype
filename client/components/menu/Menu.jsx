@@ -15,7 +15,7 @@ export default function Menu() {
     useEffect(() => {
         const fetchDrinks = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/api/drinks');
+                const res = await axios.get('http://localhost:3000/drinks');
                 const { data, category } = res.data
                 setCards(data)
                 setDrinkCategory(category)
