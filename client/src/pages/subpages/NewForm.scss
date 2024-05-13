@@ -1,0 +1,45 @@
+@use '../../../components/var' as *;
+
+.newform-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newform-form {
+    margin: 0 auto;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.newform-textarea {
+    resize: none;
+    height: 5em;
+    font-size: 1em;
+    padding: .1em;
+}
+
+.newform-image-preview {
+    width: clamp(15em, 100%, 30em);
+    display: flex;
+    align-self: center;
+}
+
+.newform-form>select,
+.newform-form>input {
+    font-size: 1em;
+    padding: .1em;
+}
+
+
+
+.newform-form>label {
+    font-size: 1em;
+}
+
+.newform-form>button {
+    margin-top: 1em;
+    font-size: 1.5em;
+}

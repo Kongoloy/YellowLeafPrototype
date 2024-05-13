@@ -3,7 +3,7 @@ import './Header.scss'
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import Hamburger from './Hamburger';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import BlackDropFilter from '../hero/BlackDropFilter';
 
 const scrollToElement = (id) => {

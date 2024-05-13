@@ -1,0 +1,17 @@
+@use '../../components/var' as *;
+
+.controls-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.controls-tag {
+    font-size: clamp(3em, 10vw, 5em);
+}
+
+.controls-container>button {
+    margin-top: 1em;
+    font-size: 1.5em;
+}

@@ -9,13 +9,9 @@ body {
   margin: 0;
   background-color: $o-color;
   -webkit-user-select: none;
-  /* Safari */
   user-select: none;
 }
 
-// ::-webkit-scrollbar {
-//   display: none;
-// }
 
 .noscroll {
   overflow: auto;

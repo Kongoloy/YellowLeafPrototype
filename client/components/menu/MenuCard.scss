@@ -8,6 +8,7 @@
     background-color: $o-color;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     scroll-snap-align: center;
+    border-radius: 1em;
     scroll-snap-stop: always;
 }
 
@@ -39,6 +40,6 @@
     align-items: center;
     width: 15em;
     height: 15em;
-    border-radius: 2em;
+    border-radius: .5em;
     overflow: hidden;
 }

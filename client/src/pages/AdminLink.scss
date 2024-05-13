@@ -1,0 +1,40 @@
+@use '../../components/var' as *;
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-tag {
+    font-size: clamp(3em, 10vw, 5em);
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-form>label {
+    font-size: 1.5em;
+}
+
+.admin-form>input {
+    font-size: 1.5em;
+    padding: .1em;
+}
+
+.admin-form>button {
+    margin-top: 1em;
+    font-size: 1.5em;
+}
+
+.admin-error {
+    color: red;
+    margin: 0;
+}
+
+.admin-home {
+    margin: 1em;
+}

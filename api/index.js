@@ -1,11 +1,26 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import Drink from "./models/drinkModel.js";
 import cors from "cors";
+import allroutes from "./routes/_routes.js";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import cookieParser from "cookie-parser";
+
 const app = express();
 dotenv.config();
 
+const firebase = initializeApp({
+    apiKey: process.env.Firebase_apiKey,
+    authDomain: process.env.Firebase_authDomain,
+    projectId: process.env.Firebase_projectId,
+    storageBucket: process.env.Firebase_storageBucket,
+    messagingSenderId: process.env.Firebase_messagingSenderId,
+    appId: process.env.Firebase_appId,
+    measurementId: process.env.Firebase_measurementId,
+});
+
+const auth = getAuth(firebase)
 async function main() {
     try {
         await mongoose.connect(process.env.MONGOCONNECT)
@@ -15,20 +30,30 @@ async function main() {
     }
 }
 main().catch(err => console.log(err));
+
 const PORT = process.env.PORT || 5050
 
-app.use(cors())
-// app.use(express.json())
+app.use(cors({
+    origin: [process.env.WEBSITE_ADDRESS],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+}))
+app.use(cookieParser())
+app.use(express.json())
 
-app.get('/drinks', async (req, res) => {
-    const data = await Drink.find()
-    const category = Drink.schema.path('category').enumValues
-    console.log(data, category)
-    res.send({ data, category })
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error'
+    return res.status(statusCode).json({
+        success: false,
+        statusCode: statusCode,
+        message: message,
+    })
 })
+app.use("/api/", allroutes)
 
 app.listen(PORT, () => {
     console.log(`server runnning on ${PORT}`)
 })
 
-export default app;
+export { app, auth };

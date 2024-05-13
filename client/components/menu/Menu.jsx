@@ -3,11 +3,9 @@ import axios from 'axios';
 import MenuCard from "./MenuCard";
 import "./Menu.scss";
 import { motion } from "framer-motion";
-import { capFirstLetter } from "../../utils";
+import { capFirstLetter, getDrinksCategory } from "../../utils";
 
 export default function Menu() {
-    // temporary
-    // for cards only get data for the first top 5 menus not all menus to save performance
     const [drinkCategory, setDrinkCategory] = useState([])
     const [cards, setCards] = useState([]);
     const [drinkTypeMenu, setDrinkTypeMenu] = useState('coffee');
@@ -15,17 +13,16 @@ export default function Menu() {
     useEffect(() => {
         const fetchDrinks = async () => {
             try {
-                const res = await axios.get('https://yellow-leaf-api.vercel.app/drinks');
-                const { data, category } = res.data
+                const res = await axios.get(`api/drinks/all`);
+                const { data } = res.data;
                 setCards(data)
-                setDrinkCategory(category)
+                setDrinkCategory(await getDrinksCategory())
             } catch (error) {
                 console.error('Error fetching data cards:', error);
             }
         };
         fetchDrinks();
     }, []);
-
     return (
         <div className="menu" id="menu">
             <div className="menu-nav-container">

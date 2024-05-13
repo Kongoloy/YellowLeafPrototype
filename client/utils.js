@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export function capFirstLetter(str) {
     return str[0].toUpperCase() + str.slice(1);
 }
@@ -8,4 +10,10 @@ export function removeJPG(str) {
 
 export function replaceWithSpace(str) {
     return str.replaceAll('_', ' ');
+}
+
+export async function getDrinksCategory() {
+    const res = await axios.get('/api/drinks/all');
+    const { category } = res.data;
+    return category;
 }
