@@ -9,7 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: env.VITE_PORT,
+        target: env.VITE_API,
       }
     }
   }
