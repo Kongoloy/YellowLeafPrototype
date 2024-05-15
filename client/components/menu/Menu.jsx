@@ -14,7 +14,8 @@ export default function Menu() {
         const fetchDrinks = async () => {
             try {
                 const res = await axios.get(`${import.meta.env.VITE_API}/api/drinks/all`);
-                const { data } = res.data;
+                console.log(res);
+                const { data } = res;
                 setCards(data)
                 setDrinkCategory(await getDrinksCategory())
             } catch (error) {
