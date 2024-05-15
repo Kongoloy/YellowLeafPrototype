@@ -24,6 +24,7 @@ const authenticate = async (req, res, next) => {
             withCredentials: true,
             secure: true,
             httpOnly: true,
+            sameSite: 'none',
         });
         res.status(204).end();
 
