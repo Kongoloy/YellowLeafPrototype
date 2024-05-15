@@ -33,14 +33,27 @@ main().catch(err => console.log(err));
 
 const PORT = process.env.PORT || 5050
 
-app.use(cors({
-    origin: [process.env.WEBSITE_ADDRESS],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-}))
 app.use(cookieParser())
 app.use(express.json())
+app.use((req, res, next) => {
+    res.setHeader(
+        "Access-Control-Allow-Origin",
+        process.env.WEBSITE_ADDRESS
+    );
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET,PUT,POST,DELETE"
+    );
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Content-Type, Authorization, X-Content-Type-Options, Accept, X-Requested-With, Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
+    );
+    res.setHeader("Access-Control-Allow-Credentials", true);
+    res.setHeader("Access-Control-Allow-Private-Network", true);
+    res.setHeader("Access-Control-Max-Age", 7200);
 
+    next();
+});
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal Server Error'
