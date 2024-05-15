@@ -14,6 +14,6 @@ export function replaceWithSpace(str) {
 
 export async function getDrinksCategory() {
     const res = await axios.get('/api/drinks/all');
-    const { category } = res.data;
+    const { category } = res.data.data;
     return category;
 }
