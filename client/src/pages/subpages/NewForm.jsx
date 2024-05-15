@@ -23,7 +23,7 @@ export default function NewForm({ category }) {
             multiData.append(key, newFormData[key]);
         }
         try {
-            await axios.post('/api/admin/controls/new', multiData, { withCredentials: true });
+            await axios.post(`${import.meta.env.VITE_API}/api/admin/controls/new`, multiData, { withCredentials: true });
             setLoading(false);
             setNewFormData({
                 name: "",

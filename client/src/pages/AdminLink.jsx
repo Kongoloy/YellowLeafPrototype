@@ -10,7 +10,7 @@ export default function AdminLink() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/admin/auth', formData, { withCredentials: true });
+            await axios.post(`${import.meta.env.VITE_API}/api/admin/auth`, formData, { withCredentials: true });
             navigate('/admin/controls');
         } catch (err) {
             console.error('Error submitting form:', err);

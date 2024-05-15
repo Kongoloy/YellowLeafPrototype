@@ -23,7 +23,7 @@ export default function Controlslink() {
             try {
                 setDrinkCategory(await getDrinksCategory())
                 const data = await axios.get(
-                    "/api/admin/controls",
+                    `${import.meta.env.VITE_API}/api/admin/controls`,
                     { withCredentials: true }
                 );
                 const { status } = data;
