@@ -15,7 +15,7 @@ export default function Menu() {
             try {
                 const res = await axios.get(`${import.meta.env.VITE_API}/api/drinks/all`);
                 console.log(res);
-                const { data } = res;
+                const { data } = res.data;
                 setCards(data)
                 setDrinkCategory(await getDrinksCategory())
             } catch (error) {
