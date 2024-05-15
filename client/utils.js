@@ -13,7 +13,7 @@ export function replaceWithSpace(str) {
 }
 
 export async function getDrinksCategory() {
-    const res = await axios.get('/api/drinks/all');
+    const res = await axios.get(`${import.meta.env.VITE_API}/api/drinks/all`);
     const { category } = res.data.category;
     return category;
 }
